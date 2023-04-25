@@ -43,6 +43,7 @@ const MyEditor = () => {
     const contentState = editorState.getCurrentContent();
     const rawContent = JSON.stringify(convertToRaw(contentState));
     localStorage.setItem("editorContent", rawContent);
+    alert("Content Saved Sucesfully")
   };
 
   const handleBeforeInput = (input) => {
@@ -58,14 +59,45 @@ const MyEditor = () => {
 
   return (
     <>
-      <Editor
-        editorState={editorState}
-        onChange={onChange}
-        handleKeyCommand={handleKeyCommand}
-        onTab={onTab}
-        handleBeforeInput={handleBeforeInput}
-      />
-      <button onClick={saveContent}>Save</button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "80%",
+          margin: "auto",
+        }}
+      >
+        <h1>Editor By Ganesh Bahire</h1>
+        <button
+          style={{
+            backgroundColor: "green",
+            color: "white",
+            width: "150px",
+            height: "50px",
+            margin: "auto",
+          }}
+          onClick={saveContent}
+        >
+          Save
+        </button>
+      </div>
+
+      <div
+        style={{
+          height: "80vh",
+          width: "80%",
+          border: "1px solid blue",
+          margin: "auto",
+        }}
+      >
+        <Editor
+          editorState={editorState}
+          onChange={onChange}
+          handleKeyCommand={handleKeyCommand}
+          onTab={onTab}
+          handleBeforeInput={handleBeforeInput}
+        />
+      </div>
     </>
   );
 };
